@@ -9,7 +9,7 @@ const app = express();
 const port = 5000 || process.env.PORT;
 
 app.use(cors({
-  origin: 'https://remarkable-naiad-4a9428.netlify.app/', 
+  origin: 'https://brilliant-bunny-d140c2.netlify.app', 
   methods: ['GET', 'POST'],
   credentials: true
 }));
