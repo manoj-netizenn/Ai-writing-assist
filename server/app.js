@@ -1,0 +1,20 @@
+const express = require("express");
+const cors = require("cors");
+require("dotenv").config();
+const analyzeRouter = require("./routes/analyze");
+const grammarCheck = require("./routes/grammarChecker");
+const spellChecker = require("./routes/spellChecker");
+
+const app = express();
+const port = 5000 || process.env.PORT;
+
+app.use(cors());
+app.use(express.json());
+
+app.use("/api/analyze", analyzeRouter);
+app.use("/api/grammarcheck", grammarCheck);
+app.use("/api/spellcheck", spellChecker);
+
+app.listen(port, () => {
+  console.log(`AI Writing app listening at http://localhost:${port}`);
+});
