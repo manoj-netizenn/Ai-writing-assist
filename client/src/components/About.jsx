@@ -1,8 +1,11 @@
 import React from "react";
 import { FaPencilAlt, FaMagic, FaRobot, FaChartLine } from "react-icons/fa";
 import { Link } from "react-router-dom";
-
+import { usePrivy } from "@privy-io/react-auth";
+ 
 const About = () => {
+   const { login, ready, authenticated } = usePrivy();
+
   return (
     <div className="container mx-auto px-4 py-12 bg-gray-100 min-h-screen">
       <div className="max-w-4xl mx-auto">
@@ -59,12 +62,12 @@ const About = () => {
             Join thousands of satisfied users who have elevated their writing
             with AI Writing Assistant.
           </p>
-          <Link
-            to="/write"
+         {authenticated ?(<Link
+            to="/writer"
             className="bg-white text-blue-600 px-8 py-3 rounded-full font-bold text-lg hover:bg-blue-100 transition duration-300"
           >
             Get Started Now
-          </Link>
+          </Link>): <button onClick={login} className="bg-white text-blue-600 px-8 py-3 rounded-full font-bold text-lg hover:bg-blue-100 transition duration-300">Start Writing Now</button>}
         </div>
       </div>
     </div>

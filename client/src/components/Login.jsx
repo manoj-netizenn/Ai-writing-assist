@@ -9,7 +9,7 @@ function LoginPage() {
 
   useEffect(() => {
     if (ready && authenticated) {
-      navigate("/write");
+      navigate("/writer");
     }
   }, [ready, authenticated, navigate]);
 

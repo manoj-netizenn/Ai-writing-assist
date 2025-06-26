@@ -2,11 +2,14 @@ import React from "react";
 import { FaPencilAlt, FaSpellCheck, FaSyncAlt } from "react-icons/fa";
 import ai from "../images/ai.png";
 import { Link } from "react-router-dom";
+import { usePrivy } from "@privy-io/react-auth";
+
 const Home = () => {
+  const { login, ready, authenticated } = usePrivy();
+
   return (
     <div className="min-h-screen flex flex-col">
       <main className="flex-grow">
-        
         <section className="bg-gradient-to-r from-blue-500 to-purple-600 text-white py-20 px-6">
           <div className="container mx-auto flex flex-col md:flex-row items-center">
             <div className="md:w-1/2 mb-10 md:mb-0">
@@ -18,12 +21,21 @@ const Home = () => {
                 grammar, eliminate spelling errors, and transform your writing
                 style.
               </p>
-              <Link
-                to="/write"
-                className="bg-white text-blue-600 px-8 py-3 rounded-full font-bold text-lg hover:bg-blue-100 transition duration-300"
-              >
-                Start Writing Now
-              </Link>
+              {authenticated ? (
+                <Link
+                  to="/writer"
+                  className="bg-white text-blue-600 px-8 py-3 rounded-full font-bold text-lg hover:bg-blue-100 transition duration-300"
+                >
+                  Start Writing Now
+                </Link>
+              ) : (
+                <button
+                  onClick={login}
+                  className="bg-white text-blue-600 px-8 py-3 rounded-full font-bold text-lg hover:bg-blue-100 transition duration-300"
+                >
+                  Get started now
+                </button>
+              )}
             </div>
             <div className="md:w-1/2">
               <img
@@ -63,9 +75,7 @@ const Home = () => {
       </main>
 
       <footer className="bg-gray-800 text-white py-8 text-center">
-        <p>
-          AI Writing Assistant ©{new Date().getFullYear()} | Powered by
-        </p>
+        <p>AI Writing Assistant ©{new Date().getFullYear()} | Powered by</p>
       </footer>
     </div>
   );

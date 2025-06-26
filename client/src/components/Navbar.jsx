@@ -22,13 +22,13 @@ const Navbar = () => {
             to="/"
             className="flex items-center space-x-2 text-xl font-bold"
           >
-            <FaPencilAlt className="text-2xl" /> {/* Logo icon */}
+            <FaPencilAlt className="text-2xl" /> 
             <span>AI Writing Assistant</span>
           </Link>
           <div className="hidden md:flex space-x-4">
             <NavLink to="/">Home</NavLink>
             <NavLink to="/about">About</NavLink>
-            {authenticated && <NavLink to="/write">Write</NavLink>}
+            {authenticated && <NavLink to="/writer">Write</NavLink>}
           </div>
         </div>
         <div>

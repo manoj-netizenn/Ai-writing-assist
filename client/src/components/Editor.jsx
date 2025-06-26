@@ -11,7 +11,7 @@ import {
 import { SiGrammarly } from "react-icons/si";
 import { usePrivy } from "@privy-io/react-auth";
 
-const BASE_URL= " https://ai-writing-assist.onrender.com";
+const BASE_URL = "https://ai-writing-assist.onrender.com/";
 
 const Editor = () => {
   const { getAccessToken } = usePrivy();
