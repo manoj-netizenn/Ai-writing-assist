@@ -1,17 +1,26 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link ,useNavigate } from "react-router-dom";
 import { usePrivy } from "@privy-io/react-auth";
 import { FaPencilAlt } from "react-icons/fa";
 
+
 const Navbar = () => {
   const { ready, authenticated, login, logout } = usePrivy();
-
   if (!ready) {
     return (
       <div className="flex justify-center items-center h-16 bg-gradient-to-r from-blue-600 to-purple-600">
         <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-white"></div>
       </div>
     );
+  }
+  
+  
+  const navigate=useNavigate();
+  
+  const onLogout=()=>{
+            logout();
+            window.alert("Logout successfully")
+            navigate('/'); 
   }
 
   return (
@@ -34,7 +43,8 @@ const Navbar = () => {
         <div>
           {authenticated ? (
             <button
-              onClick={logout}
+              onClick={onLogout}
+              
               className="bg-white text-blue-600 px-4 py-2 rounded-full font-semibold hover:bg-blue-100 transition duration-300"
             >
               Logout
